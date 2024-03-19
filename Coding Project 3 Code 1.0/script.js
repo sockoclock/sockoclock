@@ -73,12 +73,14 @@ dropIns.addEventListener("change", function () {
   // After changing the input device, add new listeners for 'noteon' and 'noteoff' events.
   // These listeners will handle MIDI note on (key press) and note off (key release) messages.
   myInput.addListener("noteon", function (someMIDI) {
+    console.log(someMIDI);
     // When a note on event is received, send a note on message to the output device.
     // This can trigger a sound or action on the MIDI output device.
     myOutput.sendNoteOn(midiProcess(someMIDI));
   });
 
   myInput.addListener("noteoff", function (someMIDI) {
+    console.log(someMIDI);
     // Similarly, when a note off event is received, send a note off message to the output device.
     // This signals the end of a note being played.
 
@@ -148,11 +150,12 @@ let transSlider = document.getElementById("transSlider")
 transSlider.addEventListener("change", function(){
     let transDisplay = document.getElementById("transDisplay"); //var for semitone display container
     transDisplay.innerText = transSlider.value //changes innertext of semitone display container to transSlider value
+    transposition = transSlider.value
     // makeChord(60, "Major"); //placeholder chord
     // console.log(`This is a test where 60 is the MIDI Input and Major is the Quality. The makeChord funtion is called upon a change event of the Transposition Slider.`)
 });
 
-let transAmount = transSlider.value     //this chosen transposition amount will be an input parameter for makeChord
+//let transAmount = transSlider.value     //this chosen transposition amount will be an input parameter for makeChord
 
 
 
